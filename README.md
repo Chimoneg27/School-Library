@@ -28,8 +28,7 @@
 
 # 📖 School Library <a name="about-project"></a>
 
-**School Library** is an app to manage your library
-
+**School Library** is a comprehensive application designed to streamline the management of your library resources. It provides an intuitive interface for tracking book inventory, managing book loans, and maintaining records of students and staff. With its robust search functionality, finding a book or a borrower's information is just a few clicks away. The app is built with a focus on user-friendliness, ensuring that anyone from students to librarians can easily navigate and utilize its features. Whether you're checking in returned books or cataloging new additions to the library, the School Library app makes library management a breeze.
 
 ## 🛠 Built With <a name="built-with"></a>
 
