@@ -45,6 +45,7 @@
 
 - **Built using Ruby**
 - **Person, student and teacher classes**
+- **Decorator design pattern**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
