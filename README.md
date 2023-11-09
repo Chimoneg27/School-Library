@@ -46,6 +46,7 @@
 - **Built using Ruby**
 - **Person, student and teacher classes**
 - **Decorator design pattern**
+- **Associations**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -105,6 +106,7 @@ it will install the required gemfile for running the project
 - **Add UI System**
 - **Add Database to store recent message**
 - **Add Account System**
+- **Add UML diagram**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
