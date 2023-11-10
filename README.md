@@ -103,10 +103,9 @@ it will install the required gemfile for running the project
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- **Add UI System**
 - **Add Database to store recent message**
 - **Add Account System**
-- **Add UML diagram**
+- **Add UML diag**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
