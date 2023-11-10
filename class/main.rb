@@ -10,6 +10,7 @@ def menu
   puts '6 - List all rentals for a given person id'
   puts '7 - Exit'
   user_choice = gets.chomp.to_i
+  puts user_address
   puts user_choice
   execute(user_choice)
 end
@@ -39,6 +40,8 @@ def execute(user_choice)
     menu
   when 7
     abort 'Thank you for using the library.'
+  when 8
+    App.delete_book
   else
     puts 'Invalid input. Please enter a valid number.'
     menu

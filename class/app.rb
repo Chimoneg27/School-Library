@@ -19,7 +19,7 @@ class App
 
   def self.create_person
     print ' Do you want to create a student or a teacher? (s/t) '
-    person_type = gets.chomp.to_s
+    person_type = gets.chomp.to_i
     case person_type
     when 's'
       create_student
@@ -36,7 +36,7 @@ class App
     print 'Age: '
     age = gets.chomp.to_i
     print 'Name: '
-    name = gets.chomp.to_s
+    name = gets.chomp.to_i
     print 'Has parent permission ? [Y/N]: '
     choice = gets.chomp
     if %w[Y y].include?(choice)
