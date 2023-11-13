@@ -1,7 +1,5 @@
 require_relative 'app'
 require_relative 'execute'
-
-The new class
 class Main 
   def menu
     puts 'Please choose an option by entering a number: '
