@@ -5,7 +5,7 @@ class Execute
 
   def execute(user_choice)
     case user_choice
-  
+
     when 1
       puts App.list_books
       menu
