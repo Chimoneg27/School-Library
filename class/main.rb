@@ -1,5 +1,7 @@
 require_relative 'app'
+# require_relative 'execute'
 
+# Delete line 5 to 17
 def menu
   puts 'Please choose an option by entering a number: '
   puts '1 - List all books'
@@ -14,8 +16,25 @@ def menu
   execute(user_choice)
 end
 
-# rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity
+# The new class
+# class Main 
+#   def menu
+#     puts 'Please choose an option by entering a number: '
+#     puts '1 - List all books'
+#     puts '2 - List all people'
+#     puts '3 - Create a person'
+#     puts '4 - Create a book'
+#     puts '5 - Create a rental'
+#     puts '6 - List all rentals for a given person id'
+#     puts '7 - Exit'
+#     user_choice = gets.chomp.to_i
+#     puts user_choice
+#     Execute.new(user_choice).execute
+#   end
+# end
 
+# rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity
+# delete line 20 to 47
 def execute(user_choice)
   case user_choice
 
@@ -47,4 +66,4 @@ end
 
 # rubocop:enable Metrics/MethodLength, Metrics/CyclomaticComplexity
 puts 'Welcome to the library!'
-menu
+menu # replace this line with Main.new.menu
