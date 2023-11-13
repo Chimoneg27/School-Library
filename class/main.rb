@@ -19,4 +19,4 @@ class Main
 end
 
 puts 'Welcome to the library!'
-Main.new.menu # replace this line with Main.new.menu
+Main.new.menu
