@@ -32,14 +32,14 @@ class App
     puts 'Person created successfully.'
   end
 
-  def self.create_student(person_type)
+  def self.create_student(_person_type)
     age, name = fetch_user_input('Student')
     print 'Has parent permission? (Y/N): '
     parent_permission = gets.chomp.downcase == 'y'
     Student.new(age, name: name, parent_permission: parent_permission)
   end
 
-  def self.create_teacher(person_type)
+  def self.create_teacher(_person_type)
     age, name = fetch_user_input('Teacher')
     print 'Specialization: '
     specialization = gets.chomp
