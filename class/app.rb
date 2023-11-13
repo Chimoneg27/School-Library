@@ -33,20 +33,20 @@ class App
   end
 
   def self.create_student(person_type)
-    age, name = get_user_input('Student')
+    age, name = fetch_user_input('Student')
     print 'Has parent permission? (Y/N): '
     parent_permission = gets.chomp.downcase == 'y'
     Student.new(age, name: name, parent_permission: parent_permission)
   end
 
   def self.create_teacher(person_type)
-    age, name = get_user_input('Teacher')
+    age, name = fetch_user_input('Teacher')
     print 'Specialization: '
     specialization = gets.chomp
-    Teacher.new(specialization, age, name: name)  
+    Teacher.new(specialization, age, name: name)
   end
 
-  def self.get_user_input(person_type)
+  def self.fetch_user_input(person_type)
     print "Age for #{person_type}: "
     age = gets.chomp.to_i
     print "Name for #{person_type}: "
@@ -55,13 +55,13 @@ class App
   end
 
   def self.create_book
-    title, author = get_book_info
+    title, author = fetch_book_info
     new_book = Book.new(title, author)
     puts 'Book created successfully.'
     new_book
   end
 
-  def self.get_book_info
+  def self.fetch_book_info
     print 'Title: '
     title = gets.chomp.to_s
     print 'Author: '
@@ -74,7 +74,7 @@ class App
     rental_book_index = gets.chomp.to_i
     rental_person = select_person(rental_book_index)
 
-    date = get_rental_date
+    date = fetch_rental_date
     Rental.new(date, rental_person, rental_book_index)
     puts 'Rental created successfully.'
   end
@@ -90,17 +90,17 @@ class App
     Person.all[rental_book_index - 1]
   end
 
-  def self.get_rental_date
+  def self.fetch_rental_date
     print 'Date: '
     gets.chomp
   end
 
   def self.list_rentals
-    id = get_person_id
+    id = fetch_person_id
     display_person_rentals(id)
   end
 
-  def self.get_person_id
+  def self.fetch_person_id
     print 'ID of person: '
     gets.chomp.to_i
   end
