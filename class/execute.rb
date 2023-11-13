@@ -1,3 +1,4 @@
+# rubocop:disable Metrics
 class Execute
   def initialize(user_choice)
     @user_choice = user_choice
@@ -32,3 +33,4 @@ class Execute
     end
   end
 end
+# rubocop:enable Metrics

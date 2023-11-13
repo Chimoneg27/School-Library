@@ -1,6 +1,6 @@
 require_relative 'app'
 require_relative 'execute'
-class Main 
+class Main
   def menu
     puts 'Please choose an option by entering a number: '
     puts '1 - List all books'
