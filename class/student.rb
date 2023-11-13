@@ -3,7 +3,11 @@ require_relative 'person'
 class Student < Person
   attr_reader :classroom
 
-  def initialize(age, name = 'Unknown', classroom = 5, parent_permission: true)
+  def initialize(age, **args)
+    name = args.fetch(:name, 'Unknown')
+    classroom = args.fetch(:classroom, 5)
+    parent_permission = args.fetch(:parent_permission, true)
+
     super(age, name, parent_permission: parent_permission)
     @classroom = classroom
   end
