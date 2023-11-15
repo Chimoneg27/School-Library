@@ -1,6 +1,8 @@
 require_relative 'app'
 require_relative 'execute'
 require 'json'
+
+# rubocop:disable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
 class Main
   def menu
     puts 'Please choose an option by entering a number: '
@@ -74,7 +76,7 @@ def load_data
     puts 'No rentals file found'
   end
 end
-
-#data
+# rubocop:enable Metrics/AbcSize, Metrics/CyclomaticComplexity, Metrics/MethodLength, Metrics/PerceivedComplexity
+# data
 puts 'Welcome to the library!'
 Main.new.menu
