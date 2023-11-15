@@ -26,7 +26,9 @@ class Execute
       App.list_rentals
       Main.new.menu
     when 7
+      App.save_data
       abort 'Thank you for using the library.'
+
     else
       puts 'Invalid input. Please enter a valid number.'
       Main.new.menu
