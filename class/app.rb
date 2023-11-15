@@ -3,6 +3,7 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
 require_relative 'person'
+require 'json'
 
 class App
   def self.list_books
@@ -70,58 +71,58 @@ class App
   end
 
   def self.create_rental
-    display_books_for_rental
-    rental_book_index = gets.chomp.to_i
-    rental_person = select_person(rental_book_index)
-
-    date = fetch_rental_date
-    Rental.new(date, rental_person, rental_book_index)
-    puts 'Rental created successfully.'
-  end
-
-  def self.display_books_for_rental
-    puts 'Please select a book from the following list by number:'
-    Book.all.each_with_index do |book, index|
-      puts "(#{index + 1}) Title: #{book.title}, Author: #{book.author}"
+    puts 'Select a book from the following list by number'
+    Book.all.map.with_index do |book, index|
+      puts " (#{index + 1}) Title: #{book.title}, Author: #{book.author}"
     end
-  end
+    rental_book_index = gets.chomp.to_i
+    rental_book = Book.all[rental_book_index - 1]
 
-  def self.select_person(rental_book_index)
-    Person.all[rental_book_index - 1]
-  end
+    puts 'Select a person from the folowing list by number(not id)'
+    Person.all.map.with_index do |person, index|
+      puts "(#{index + 1}), Name: #{person.name}, Age: #{person.age}"
+    end
+    rental_person_index = gets.chomp.to_i
+    rental_person = Person.all[rental_person_index - 1]
 
-  def self.fetch_rental_date
     print 'Date: '
-    gets.chomp
+    date = gets.chomp
+    Rental.new(date, rental_person, rental_book)
+    puts 'Rental created successfully'
   end
 
   def self.list_rentals
-    id = fetch_person_id
-    display_person_rentals(id)
-  end
-
-  def self.fetch_person_id
     print 'ID of person: '
-    gets.chomp.to_i
-  end
+    id = gets.chomp.to_i
+    person = Person.all.select { |x| x.id == id }[0]
 
-  def self.display_person_rentals(id)
-    person = find_person_by_id(id)
     if person
-      display_rentals(person)
+      puts 'Rentals:'
+      person.rental.each { |rental| puts "Date: #{rental.date}, Book: #{rental.book.title}" }
     else
-      puts 'Person not found.'
+      puts 'Person with the given ID does not exist '
     end
   end
 
-  def self.find_person_by_id(id)
-    Person.all.find { |person| person.id == id }
-  end
-
-  def self.display_rentals(person)
-    puts 'Rentals:'
-    person.rentals.each do |rental|
-      puts "Date: #{rental.date}, Book: #{rental.book.title}"
+  def self.save_data
+    books = Book.all.map { |book| { title: book.title, author: book.author } }
+    people = Person.all.map do |person|
+      { id: person.id, age: person.age, name: person.name, rental: [] }
     end
+
+    rentals = Rental.all.map do |rental|
+      { date: rental.date, person: { id: rental.person.id, age: rental.person.age, name: rental.person.name },
+        book: { author: rental.book.author, title: rental.book.title } }
+    end
+
+    books_json = books.to_json
+    people_json = people.to_json
+    rentals_json = rentals.to_json
+
+    File.write('rentals.json', rentals_json)
+    File.write('books.json', books_json)
+    File.write('people.json', people_json)
+
+    puts 'Data saved successfully.'
   end
 end
