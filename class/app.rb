@@ -3,6 +3,7 @@ require_relative 'student'
 require_relative 'teacher'
 require_relative 'book'
 require_relative 'person'
+require 'json'
 
 class App
   def self.list_books
@@ -72,10 +73,18 @@ class App
   def self.create_rental
     display_books_for_rental
     rental_book_index = gets.chomp.to_i
+    puts "rental_book_index: #{rental_book_index}"
+    
+    # Ensure Book.all is not nil and contains the expected books
+    puts "Book.all: #{Book.all.inspect}"
+    
+    rental_book = Book.all[rental_book_index - 1]
+    puts "rental_book: #{rental_book.inspect}"
+    
     rental_person = select_person(rental_book_index)
-
+  
     date = fetch_rental_date
-    Rental.new(date, rental_person, rental_book_index)
+    Rental.new(date, rental_person, rental_book)
     puts 'Rental created successfully.'
   end
 
@@ -123,5 +132,20 @@ class App
     person.rentals.each do |rental|
       puts "Date: #{rental.date}, Book: #{rental.book.title}"
     end
+  end
+
+  def self.save_data
+    books = Book.all.map { |book| { title: book.title, author: book.author } }
+    people = Person.all.map do |person|
+      { id: person.id, age: person.age, name: person.name, rental: [] }
+    end
+
+    books_json = books.to_json
+    people_json = people.to_json
+
+    File.write('books.json', books_json)
+    File.write('people.json', people_json)
+
+    puts 'Data saved successfully.'
   end
 end
