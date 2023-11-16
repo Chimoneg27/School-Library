@@ -122,7 +122,7 @@ class App
     File.write('rentals.json', rentals_json)
     File.write('books.json', books_json)
     File.write('people.json', people_json)
-    
+
     puts 'Data saved successfully.'
   end
 end

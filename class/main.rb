@@ -19,33 +19,40 @@ class Main
 end
 
 def load_data
-  if File.exist?('books.json')
-    books_data = File.read('books.json')
-    if books_data.empty?
-      puts 'No books found.'
-    else
-      books = JSON.parse(books_data)
-      puts 'Books:'
-      books.each do |book|
-        puts "Title: #{book['title']}, Author: #{book['author']}"
-      end
-    end
-  end
+  books_data = read_json_file('books.json')
 
-  if File.exist?('people.json')
-    people_data = File.read('people.json')
-    if people_data.empty?
-      puts 'No people found'
-    else
-      people = JSON.parse(people_data)
-      puts 'People:'
-      people.each do |person|
-        puts "ID: #{person['id']} Age: #{person['age']} Name: #{person['name']} Rental: #{person['rental']}"
-      end
-    end
-  else
-    puts 'No people file found'
+  return puts 'No books found.' if books_data.nil? || books_data.empty?
+
+  display_books(books_data)
+end
+
+def read_json_file(filename)
+  return unless File.exist?(filename)
+
+  JSON.parse(File.read(filename))
+end
+
+def display_books(books)
+  puts 'Books:'
+  books.each do |book|
+    puts "Title: #{book['title']}, Author: #{book['author']}"
   end
+end
+
+
+if File.exist?('people.json')
+  people_data = File.read('people.json')
+  if people_data.empty?
+    puts 'No people found'
+  else
+    people = JSON.parse(people_data)
+    puts 'People:'
+    people.each do |person|
+      puts "ID: #{person['id']} Age: #{person['age']} Name: #{person['name']} Rental: #{person['rental']}"
+    end
+  end
+else
+  puts 'No people file found'
 end
 
 puts 'Welcome to the library!'
