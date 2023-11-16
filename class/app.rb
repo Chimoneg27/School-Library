@@ -114,15 +114,15 @@ class App
       { date: rental.date, person: { id: rental.person.id, age: rental.person.age, name: rental.person.name },
         book: { author: rental.book.author, title: rental.book.title } }
     end
-       # after the people_json in app.rb 
-       File.write('rentals.json', rentals_json)
 
     books_json = books.to_json
     people_json = people.to_json
+    rentals_json = rentals.to_json
 
+    File.write('rentals.json', rentals_json)
     File.write('books.json', books_json)
     File.write('people.json', people_json)
-
+    
     puts 'Data saved successfully.'
   end
 end

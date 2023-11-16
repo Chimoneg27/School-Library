@@ -43,8 +43,8 @@ def load_data
         puts "ID: #{person['id']} Age: #{person['age']} Name: #{person['name']} Rental: #{person['rental']}"
       end
     end
-    else
-      puts 'No people file found'
+  else
+    puts 'No people file found'
   end
 end
 
