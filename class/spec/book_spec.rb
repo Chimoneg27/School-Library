@@ -26,4 +26,12 @@ describe Book do
       @book.author.should eql 'author'
     end
   end
+
+  describe '#add_rental' do
+    it 'adds a new rental' do
+      book = Book.new('English', 'Garvin Chimone')
+      book.add_rental('2019-04-01', Person.new('Ali', 17))
+      expect(book.rental.length).to eq(1)
+    end
+  end
 end
